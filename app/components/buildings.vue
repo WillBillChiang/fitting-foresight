@@ -1,6 +1,6 @@
 <template>
   <Page class="container">
-    <ListView class="list" v-for="building in buildings">
+    <ListView class="list" for="building in buildings">
       <v-template>
         <Label class="buildings" :text="building.name" @tap="onBuildingTap(building.name)"/>
       </v-template>
