@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "181445699168",
+    "firebase_url": "https://fitting-foresight.firebaseio.com",
+    "project_id": "fitting-foresight",
+    "storage_bucket": "fitting-foresight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181445699168:android:c00f6a8f4e88f85ad88505",
+        "android_client_info": {
+          "package_name": "fitting.foresight.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181445699168-rom5r07s6tmip4kudib63rqoap8b72gd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGnlcbWK_Zf7_HPseqDRTWoVyOFnNtmyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181445699168-rom5r07s6tmip4kudib63rqoap8b72gd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
