@@ -2,22 +2,21 @@
   <Page class="container">
     <StackLayout>
       <Button @tap="isLogged" text="Log In"/>
-      <Label>{{loggedIn}}</Label>
-      <Button text="Button" @tap="onButtonTap" />
     </StackLayout >
   </Page>
 </template>
 <script>
+import BuildingPage from './buildings.vue';
+import RoomPage from './rooms.vue';
+
 export default {
     data () {
         return {
-          loggedIn: false
         }
     },
     methods: {
       isLogged: function(){
-        this.loggedIn = true
-        this.$parent.loggedIn = true
+        this.$navigateTo(BuildingPage)
       }
     }
 }

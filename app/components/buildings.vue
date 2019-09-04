@@ -1,27 +1,34 @@
 <template>
   <Page class="container">
-    <ListView for="building in buildings" @itemTap="onBuildingTap">
+    <ListView class="list" v-for="building in buildings">
       <v-template>
-        <Label :text="building.text" />
+        <Label class="buildings" :text="building.name" @tap="onBuildingTap(building.name)"/>
       </v-template>
     </ListView>
   </Page>
 </template>
+
 <script>
+import RoomPage from './rooms.vue';
 export default {
     data () {
         return {
           buildings: [
-            { name: '800s'},
-            { name: '400s'},
-            { name: 'Admin'}
-          ]
+            { name: '800s' },
+            { name: '400s' },
+            { name: 'Admin' }
+          ],
         }
     },
     methods: {
-      onBuildingTap: function(){
-        console.log("bruh")
-      }
+      onBuildingTap: function(b){
+        this.$navigateTo(RoomPage, {
+          props: {
+            currentBuilding: b
+          }
+        })
+        console.log("D:")
+      },
     }
 }
 </script>
@@ -35,6 +42,12 @@ export default {
 }
 .text-color-primary {
   color: blue;
+}
+.list {
+  font-size: 50px;
+}
+.buildings {
+  font-size: 40px;
 }
 
 </style>
