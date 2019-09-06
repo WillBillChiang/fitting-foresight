@@ -1,6 +1,6 @@
 <template>
   <Page class="container">
-    <ListView class="list" for="building in buildings">
+    <ListView class="list"for="building in buildings">
       <v-template>
         <Label class="buildings" :text="building.name" @tap="onBuildingTap(building.name)"/>
       </v-template>
@@ -9,15 +9,13 @@
 </template>
 
 <script>
+var firebase = require("nativescript-plugin-firebase");
+
 import RoomPage from './rooms.vue';
 export default {
     data () {
         return {
-          buildings: [
-            { name: '800s' },
-            { name: '400s' },
-            { name: 'Admin' }
-          ],
+          buildings: [],
         }
     },
     methods: {
@@ -29,6 +27,34 @@ export default {
         })
         console.log("D:")
       },
+    },
+    created: function(){
+
+      var fireBuildings = []
+      var onQueryEvent = function(result) {
+        // note that the query returns 1 match at a time
+        // in the order specified in the query
+        if (!result.error) {
+            fireBuildings.push({name : result.value.buildingName});
+            console.log("Event type: " + result.type);
+            console.log("Key: " + result.key);
+            console.log("Value: " + JSON.stringify(result.value)); // a JSON object
+            console.log("Children: " + JSON.stringify(result.children)); // an array, added in plugin v 8.0.0
+        }
+      };
+
+    firebase.query(
+        onQueryEvent,
+        "/buildings",
+        {
+            orderBy: {
+                type: firebase.QueryOrderByType.CHILD,
+                value: 'since' // mandatory when type is 'child'
+            },
+        }
+    );
+    this.buildings = fireBuildings;
+    console.log(this.buildings)
     }
 }
 </script>

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "181445699168",
-    "firebase_url": "https://fitting-foresight.firebaseio.com",
-    "project_id": "fitting-foresight",
-    "storage_bucket": "fitting-foresight.appspot.com"
+    "project_number": "101620685016",
+    "firebase_url": "https://fitted-foresight.firebaseio.com",
+    "project_id": "fitted-foresight",
+    "storage_bucket": "fitted-foresight.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:181445699168:android:c00f6a8f4e88f85ad88505",
+        "mobilesdk_app_id": "1:101620685016:android:5bda69358be1e92fb85fad",
         "android_client_info": {
-          "package_name": "fitting.foresight.android"
+          "package_name": "org.nativescript.fittedforesight"
         }
       },
       "oauth_client": [
         {
-          "client_id": "181445699168-rom5r07s6tmip4kudib63rqoap8b72gd.apps.googleusercontent.com",
+          "client_id": "101620685016-p8m54no78p8hsmkr0drlbq9uat8nqf3b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBGnlcbWK_Zf7_HPseqDRTWoVyOFnNtmyg"
+          "current_key": "AIzaSyCcPNxVFMNUBGXa8h5hnwEfjglNHfpJENM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "181445699168-rom5r07s6tmip4kudib63rqoap8b72gd.apps.googleusercontent.com",
+              "client_id": "101620685016-p8m54no78p8hsmkr0drlbq9uat8nqf3b.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
