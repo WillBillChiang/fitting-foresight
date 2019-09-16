@@ -2,30 +2,64 @@
   <Page class="container">
     <ListView class="list" for="room in rooms" >
       <v-template>
-        <Label class="buildings" :text="room.name" @tap="onBuildingTap(room)"/>
+        <Label class="buildings" :text="room" @tap="onBuildingTap(room)"/>
       </v-template>
     </ListView>
+
   </Page>
 </template>
 
 <script>
+import RoomPage from './room.vue';
+
+var firebase = require("nativescript-plugin-firebase");
+
 export default {
   data () {
       return {
-        rooms: [
-          {building: '800s', name: '801'},
-          {building: '800s', name: '802'},
-          {building: '400s', name: '401'},
-          {building: '400s', name: '402'},
-          {building: 'Admin', name: '101'},
-          {building: 'Admin', name: '102'},
-        ],
+        rooms: [],
       }
   },
   methods: {
-    onBuildingTap: function(r){
-      console.log(r)
-    }
+    onBuildingTap: function(){
+      console.log(this.currentBuilding);
+    },
+    onBuildingTap: function(b){
+      var path = this.currentBuilding + "/" + b
+      console.log(path)
+      this.$navigateTo(RoomPage, {
+        props: {
+          room: path
+        }
+      })
+    },
+  },
+  mounted: function(){
+    var onQueryEvent = (result) => {
+      // note that the query returns 1 match at a time
+      // in the order specified in the query
+      if (!result.error) {
+          this.rooms.push(result.key);
+          console.log("Event type: " + result.type);
+          console.log("Key: " + result.key);
+          console.log("Value: " + JSON.stringify(result.value)); // a JSON object
+          console.log("Children: " + JSON.stringify(result.children)); // an array, added in plugin v 8.0.0
+          console.log('Buildings: ' + this.buildings)
+      }
+    };
+
+    firebase.query(
+        onQueryEvent,
+        "/buildings/"+this.currentBuilding,
+        {
+            orderBy: {
+                type: firebase.QueryOrderByType.CHILD,
+                value: 'since' // mandatory when type is 'child'
+            },
+        }
+    );
+
+
   },
   props: ['currentBuilding']
 }

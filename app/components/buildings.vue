@@ -2,7 +2,7 @@
   <Page class="container">
     <ListView class="list"for="building in buildings">
       <v-template>
-        <Label class="buildings" :text="building.name" @tap="onBuildingTap(building.name)"/>
+        <Label class="buildings" :text="building" @tap="onBuildingTap(building)"/>
       </v-template>
     </ListView>
   </Page>
@@ -11,7 +11,7 @@
 <script>
 var firebase = require("nativescript-plugin-firebase");
 
-import RoomPage from './rooms.vue';
+import RoomsPage from './rooms.vue';
 export default {
     data () {
         return {
@@ -20,26 +20,29 @@ export default {
     },
     methods: {
       onBuildingTap: function(b){
-        this.$navigateTo(RoomPage, {
+        console.log(b)
+        this.$navigateTo(RoomsPage, {
           props: {
             currentBuilding: b
           }
         })
-        console.log("D:")
       },
     },
-    created: function(){
+    mounted: function(){
 
-      var fireBuildings = []
-      var onQueryEvent = function(result) {
+      var onQueryEvent = (result) => {
         // note that the query returns 1 match at a time
         // in the order specified in the query
         if (!result.error) {
-            fireBuildings.push({name : result.value.buildingName});
+            this.buildings.push(result.key);
             console.log("Event type: " + result.type);
             console.log("Key: " + result.key);
             console.log("Value: " + JSON.stringify(result.value)); // a JSON object
             console.log("Children: " + JSON.stringify(result.children)); // an array, added in plugin v 8.0.0
+            console.log('Buildings: ' + this.buildings)
+            this.buildings.forEach(function(item){
+              console.log(item);
+            })
         }
       };
 
@@ -53,8 +56,8 @@ export default {
             },
         }
     );
-    this.buildings = fireBuildings;
-    console.log(this.buildings)
+
+
     }
 }
 </script>
