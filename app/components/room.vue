@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HomePage from "./Home.vue";
+import HomePage from "./buildings.vue";
 var firebase = require("nativescript-plugin-firebase");
 export default {
   data() {
