@@ -3,7 +3,7 @@
 		<FlexboxLayout class="page">
 			<StackLayout class="form">
 				<Image class="logo" src="~/images/logo.png" />
-				<Label class="header" text="APP NAME" />
+				<Label class="header" text="Fitting Foresight" />
 
 				<StackLayout class="input-field" marginBottom="25">
 					<TextField class="input" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" v-model="user.email"
@@ -24,15 +24,7 @@
 				</StackLayout>
 
 				<Button :text="isLoggingIn ? 'Log In' : 'Sign Up'" @tap="submit" class="btn btn-primary m-t-20" />
-				<Label v-show="isLoggingIn" text="Forgot your password?" class="login-label" @tap="forgotPassword" />
 			</StackLayout>
-
-			<Label class="login-label sign-up-label" @tap="toggleForm">
-	          <FormattedString>
-	            <Span :text="isLoggingIn ? 'Don’t have an account? ' : 'Back to Login'" />
-	            <Span :text="isLoggingIn ? 'Sign up' : ''" class="bold" />
-	          </FormattedString>
-	        </Label>
 		</FlexboxLayout>
 	</Page>
 </template>
@@ -139,7 +131,7 @@ export default {
       prompt({
         title: "Forgot Password",
         message:
-          "Enter the email address you used to register for APP NAME to reset your password.",
+          "Enter the email address you used to register for Fitting Foresight to reset your password.",
         inputType: "email",
         defaultText: "",
         okButtonText: "Ok",
@@ -169,7 +161,7 @@ export default {
     },
     alert(message) {
       return alert({
-        title: "APP NAME",
+        title: "Fitting Foresight",
         okButtonText: "OK",
         message: message
       });

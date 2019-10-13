@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HomePage from "./buildings.vue";
+import HomePage from "./edit.vue";
 var firebase = require("nativescript-plugin-firebase");
 export default {
   data() {
@@ -19,32 +19,12 @@ export default {
   },
   methods: {
     onTap: function() {
-      // note that the query returns 1 match at a time
-      // in the order specified in the query
-      var computers = 0;
-      var status = "";
-      console.log("DAWDJAWUHDAWDUIYAWHUDIAWHUIDHUIAWHUI " + this.info[0].key)
-      for (var i = 0; i < this.info.length; i++) {
-        if (this.info[i].key == "Computers") {
-          computers = this.info[i].value;
+      this.$navigateTo(HomePage, {
+        props: {
+          room: this.room
         }
-        if (this.info[i].key == "Status") {
-          status = this.info[i].value;
-        }
-      }
-      console.log("STATUS:::::" + status)
-      if (status == "Power Cables") {
-        firebase.setValue("/buildings/" + this.room, {
-          Computers: computers,
-          Status: "Complete"
-        });
-      } else {
-        firebase.setValue("/buildings/" + this.room, {
-          Computers: computers,
-          Status: "Power Cables"
-        });
-      }
-      this.$navigateTo(HomePage);
+      });
+      console.log("AWUIDAWJIODHUIAWDHUJIAWUIHDHUIAWHUIADW")
     }
   },
   props: ["room"],
